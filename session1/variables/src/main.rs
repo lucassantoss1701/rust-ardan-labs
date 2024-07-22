@@ -10,18 +10,23 @@ fn double_or_nothing(n: i32) -> i32 {
     0
 }
 
+fn greet(s: String) -> String{
+    println!("Hello {s}");
+    s
+}
+
+fn greet_borrow(s: &String) {
+    println!("{s}");
+}
+
+fn greet_borrow_mut(s: &mut String) {
+    *s = format!("Hello {s}");
+}
+
+
 fn main() {
-    let n = double(5);
-    println!("{n}");
+    let mut name = "Hello".to_string();
+    greet_borrow_mut(&mut name);
+    println!("{name}");
 
-    let n = double_or_nothing(6);
-    println!("{n}");
-
-    let i = if n == 6{
-        6
-    }else{
-        7
-    };
-
-    println!("{i}");
 }
