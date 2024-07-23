@@ -20,14 +20,14 @@ pub enum LoginRole{
     User,
 }
 
-pub struct Usr {
+pub struct User {
     pub username: String,
     pub password: String,
     pub role: LoginRole,
 }
 
-impl Usr{
-    pub fn new(username: &str, password: &str, role: LoginRole) -> Usr{
+impl User{
+    pub fn new(username: &str, password: &str, role: LoginRole) -> User{
         Self{
             username: username.to_lowercase(),
             password: password.to_string(),
@@ -36,19 +36,27 @@ impl Usr{
     }
 }
 
-pub fn get_users() -> [Usr; 2]{
-    [
-        Usr::new("admin", "password", LoginRole::Admin),
-        Usr::new("bob", "password", LoginRole::User),
+pub fn get_users() -> Vec<User>{
+    vec![
+        User::new("admin", "password", LoginRole::Admin),
+        User::new("bob", "password", LoginRole::User),
     ]
 }
 
+fn get_admin_users(){
+    let users: Vec<String> = get_users()
+        .into_iter()
+        .filter(|u: &User| u.role == LoginRole::Admin)
+        .map(|u: User| u.username)
+        .collect();
+
+}
 pub fn login(username: &str, password: &str) -> Option<LoginAction>{
 
     let username = username.to_lowercase();
     let users = get_users();
 
-    if let Some(user) = users.iter().find(|user: &&Usr| user.username == username ){
+    if let Some(user) = users.iter().find(|user: &&User| user.username == username ){
         return if user.password == password {
             Some(LoginAction::Granted(user.role.clone()))
         } else {
@@ -60,7 +68,8 @@ pub fn login(username: &str, password: &str) -> Option<LoginAction>{
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+    use crate::LoginRole::{Admin,User};
+use super::*;
 
     #[test]
     fn test_greet_user(){
