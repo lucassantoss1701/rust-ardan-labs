@@ -5,7 +5,10 @@ edition = "2021"
 
 [dependencies]
 
-[members]
-workspace = [
+[workspace]
+members = [ "session1/authentication",
     "session1/hello_world",
+    "session1/variables",
+    "session1/authentication",
+    "session1/login",
 ]
