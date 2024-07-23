@@ -1,5 +1,3 @@
-use crate::LoginRole::{Admin, User};
-
 pub fn greet_user(name: &str) -> String{
     format!("Hello {name}")
 }
@@ -10,33 +8,54 @@ pub fn read_line() -> String{
     input.trim().to_string()
 }
 
-#[derive(PartialEq, Debug)]
+#[derive(PartialEq, Debug, Clone)]
 pub enum LoginAction{
     Granted(LoginRole),
     Denied
 }
 
-#[derive(PartialEq, Debug)]
+#[derive(PartialEq, Debug, Clone)]
 pub enum LoginRole{
     Admin,
     User,
 }
 
+pub struct Usr {
+    pub username: String,
+    pub password: String,
+    pub role: LoginRole,
+}
+
+impl Usr{
+    pub fn new(username: &str, password: &str, role: LoginRole) -> Usr{
+        Self{
+            username: username.to_lowercase(),
+            password: password.to_string(),
+            role
+        }
+    }
+}
+
+pub fn get_users() -> [Usr; 2]{
+    [
+        Usr::new("admin", "password", LoginRole::Admin),
+        Usr::new("bob", "password", LoginRole::User),
+    ]
+}
 
 pub fn login(username: &str, password: &str) -> Option<LoginAction>{
+
     let username = username.to_lowercase();
+    let users = get_users();
 
-    if username != "admin" && username != "bob"{
-        return None;
-    }
-
-    if username == "admin" && password == "password"{
-        Some(LoginAction::Granted(Admin))
-    } else if username == "bob" && password == "password"{
-        Some(LoginAction::Granted(User))
-    }else{
-        Some(LoginAction::Denied)
-    }
+    if let Some(user) = users.iter().find(|user: &&Usr| user.username == username ){
+        return if user.password == password {
+            Some(LoginAction::Granted(user.role.clone()))
+        } else {
+            Some(LoginAction::Denied)
+        }
+    };
+    None
 }
 
 #[cfg(test)]
@@ -50,8 +69,8 @@ mod tests {
 
     #[test]
     fn test_login(){
-        assert_eq!(login("admin", "password"), LoginAction::Granted(Admin));
-        assert_eq!(login("bob", "password"), LoginAction::Granted(User));
-        assert_eq!(login("wrong", "password"), LoginAction::Denied);
+        assert_eq!(login("admin", "password"), Some(LoginAction::Granted(Admin)));
+        assert_eq!(login("bob", "password"), Some(LoginAction::Granted(User)));
+        assert_eq!(login("wrong", "password"), Some(LoginAction::Denied));
     }
 }
