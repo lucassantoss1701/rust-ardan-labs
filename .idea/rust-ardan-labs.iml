@@ -10,6 +10,7 @@
       <sourceFolder url="file://$MODULE_DIR$/session1/login/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/session1/login_manager/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/session2/divide_work/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/session2/footgun/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/session2/hello/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/session2/scoped_threads/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/session2/thread_builder/src" isTestSource="false" />
