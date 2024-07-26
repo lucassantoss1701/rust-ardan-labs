@@ -14,6 +14,8 @@
       <sourceFolder url="file://$MODULE_DIR$/session2/hello/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/session2/scoped_threads/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/session2/thread_builder/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/session2/mutexes/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/session2/rwlocks/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/session1/hello_world/target" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
