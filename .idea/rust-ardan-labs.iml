@@ -21,6 +21,7 @@
       <sourceFolder url="file://$MODULE_DIR$/session2/parking/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/session2/channels1/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/session2/workers/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/session2/workers2/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/session1/hello_world/target" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>

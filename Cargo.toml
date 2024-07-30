@@ -18,5 +18,5 @@ members = [ "session1/authentication",
     "session2/thread_builder",
     "session2/scoped_threads",
     "session2/footgun",
-    "session2/mutexes", "session2/rwlocks", "session2/deadlocks", "session2/dashing", "session2/parking", "session2/channels1", "session2/workers",
+    "session2/mutexes", "session2/rwlocks", "session2/deadlocks", "session2/dashing", "session2/parking", "session2/channels1", "session2/workers", "session2/workers2",
 ]
