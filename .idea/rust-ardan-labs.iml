@@ -24,6 +24,8 @@
       <sourceFolder url="file://$MODULE_DIR$/session2/workers2/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/session2/affinity/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/session2/priority/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/session2/rayon_iters/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/session2/rayon_scopes/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/session1/hello_world/target" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>

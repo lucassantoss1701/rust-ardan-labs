@@ -6,7 +6,7 @@ use thread_priority::*;
 //DEPENDS ON THE OS
 static LOW_COUNT: AtomicI32 = AtomicI32::new(0);
 static MEDIUM_COUNT: AtomicI32 = AtomicI32::new(0);
-static HIGH_COUNT: AtomicI32 = AtomicI32::new(0);
+// static HIGH_COUNT: AtomicI32 = AtomicI32::new(0);
 
 fn low_prio(){
     set_current_thread_priority(ThreadPriority::Min).unwrap();
