@@ -28,6 +28,7 @@
       <sourceFolder url="file://$MODULE_DIR$/session2/rayon_scopes/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/session3/hello_async/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/session3/blocking/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/session3/errors/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/session3/hello_tokio/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/session3/tokio_testing/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/session1/hello_world/target" />

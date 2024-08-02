@@ -19,10 +19,11 @@ struct User{
 
 type GenericResult<T> = Result<T, Box<dyn std::error::Error>>;
 
-fn load_users() -> GenericResult<Vec<User>>{
+fn load_users() -> anyhow::Result<Vec<User>>{
     let my_path = Path::new("users.json");
     let raw_text = std::fs::read_to_string(my_path)?;
     let users: Vec<User> = serde_json::from_str(&raw_text)?;
+    anyhow::bail!("Oh no!");
     Ok(users)
 }
 
