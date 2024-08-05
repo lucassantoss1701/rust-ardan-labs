@@ -33,6 +33,7 @@
       <sourceFolder url="file://$MODULE_DIR$/session3/tokio_testing/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/session3/fileio/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/session3/restclient/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/session3/tcpserver/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/session1/hello_world/target" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
