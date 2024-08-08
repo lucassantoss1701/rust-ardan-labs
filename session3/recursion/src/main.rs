@@ -31,14 +31,12 @@ async fn call_one_of_them(n: u32) -> Pin<Box<dyn Future<Output = ()>+ Send>>{
 async fn main() {
     println!("fibonacci(10) = {}", fibonacci(10).await);
 
-    let  mut future = async {
+    let mut future = async {
         println!("Hello World");
     };
 
     tokio::pin!(future);
     (&mut future).await;
-
-
 
     let spawned = tokio::spawn( async {
         for n in 1..=3{
