@@ -41,6 +41,7 @@
       <sourceFolder url="file://$MODULE_DIR$/session3/logspan/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/session3/db/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/session3/web_service/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/session4/dropping/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/session4/low_level/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/session4/memory/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/session1/hello_world/target" />
