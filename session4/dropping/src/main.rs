@@ -1,36 +1,54 @@
-struct MyStruct{
-    n: i32,
+use std::alloc::{Layout, alloc, dealloc};
+
+struct SmartPointer<T> {
+    ptr: *mut u8,
+    data: *mut T,
+    layout: Layout
 }
 
-impl MyStruct {
-    fn new(n: i32) -> Self{
-        println!("Constructing {n}");
-        Self { n }
+impl <T> SmartPointer<T> {
+    fn new() -> SmartPointer<T> {
+        println!("Allocating memory for SmartPointer");
+
+        unsafe {
+            let layout = Layout::new::<T>();
+            let ptr = alloc(layout);
+
+            SmartPointer {
+                ptr,
+                data: ptr as *mut T,
+                layout
+            }
+        }
+    }
+
+    fn set(&mut self, val: T) {
+        unsafe {
+            *self.data = val;
+        }
+    }
+
+    fn get(&self) -> &T {
+        unsafe {
+            self.data.as_ref().unwrap()
+        }
     }
 }
 
-impl Drop for MyStruct{
+impl <T> Drop for SmartPointer<T> {
     fn drop(&mut self) {
-        println!("Dropping {}", self.n);
+        println!("Deallocating memory from SmartPointer");
+        unsafe {
+            dealloc(self.ptr, self.layout);
+        }
     }
-}
-
-struct HasDroppables {
-    x: MyStruct,
-}
-fn move_me(x: MyStruct){
-    //Do nothing
 }
 
 fn main() {
-   let x =  MyStruct::new(1);
-    {
-        let y=  MyStruct::new(2);
-    }
+    let mut my_num = SmartPointer::<i32>::new();
+    my_num.set(12);
+    println!("my_num = {}", my_num.get());
 
-    move_me(x);
-    println!("Back from function");
+    let my_num = Box::new(12);
 
-    let has_drop = HasDroppables{ x: MyStruct::new(4)};
-    println!("Ending the main function");
 }
