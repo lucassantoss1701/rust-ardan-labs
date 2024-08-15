@@ -45,6 +45,7 @@
       <sourceFolder url="file://$MODULE_DIR$/session4/low_level/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/session4/memory/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/session4/refc/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/session4/traits/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/session1/hello_world/target" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
