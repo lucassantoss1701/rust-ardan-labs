@@ -1,34 +1,71 @@
-struct Cat(String);
+use std::any::Any;
+use std::fmt::Debug;
 
+trait Animal: Debug{
+    fn speak(&self);
+}
 
-impl Cat{
-    fn feed(&mut self){
-        self.0 = format!("{} (purring)", self.0);
+#[derive(Debug)]
+struct Cat;
+
+impl Animal for Cat{
+    fn speak(&self) {
+        println!("Meow");
     }
 }
-struct CatFeeder<'a>{
-    cat: &'a mut Cat,
-}
 
-impl<'a> CatFeeder<'a>{
-    fn feed(&mut self){
-        self.cat.feed();
+#[derive(Debug)]
+
+struct Dog;
+
+impl Animal for Dog {
+    fn speak(&self) {
+        println!("Woof");
     }
 }
 
+fn speak_twice(animal: &impl Animal){
+    animal.speak();
+    animal.speak();
+    println!("{animal:?}");
+}
 
-fn borrow<'a>(i: &'a i32, j: &'a i32) -> &'a i32{
-    i
+fn make_animal() -> impl Animal{
+    Cat
+}
+
+trait DowncastableAnimal {
+    fn speak(&self) {println!("No idea")}
+    fn as_any(&self) -> &dyn std::any::Any;
+
+}
+
+struct Tortoise;
+
+impl DowncastableAnimal for Tortoise {
+    fn as_any(&self) -> &dyn Any {
+        self
+    }
 }
 
 fn main() {
-   let mut cats = vec![Cat("Frodo".to_string()), Cat("Bilbo".to_string())];
+    let cat = Cat;
+    cat.speak();
+    let dog = Dog;
+    dog.speak();
+    speak_twice(&cat);
 
-    let mut feeders = Vec::new();
-    for cat in cats.iter_mut(){
-        feeders.push(CatFeeder { cat })
+    let animal = make_animal();
+    animal.speak();
+
+    let animals: Vec<Box<dyn Animal>> = vec![Box::new(Cat), Box::new(Dog)];
+    animals.iter().for_each(|animal| animal.speak());
+
+    let more_animals: Vec<Box<dyn DowncastableAnimal>> = vec![Box::new(Tortoise)];
+    for animal in more_animals.iter(){
+        if let Some(t) = animal.as_any().downcast_ref::<Tortoise>(){
+            println!("I'm a tortoise");
+        }
     }
-
-    feeders.iter_mut().for_each(|f| f.feed());
 
 }
