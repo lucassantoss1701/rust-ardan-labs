@@ -1,33 +1,28 @@
+use std::collections::HashMap;
 
-#[derive(Debug)]
-struct Degrees(f32);
-
-#[derive(Debug)]
-struct Radians(f32);
-
-impl From<Radians> for Degrees{
-    fn from(rad: Radians) -> Self {
-        Degrees(rad.0 * 180.0 / std::f32::consts::PI)
-    }
+struct HashMapBucket<K,V>
+{
+    map: HashMap<K, Vec<V>>
 }
-
-impl From<Degrees> for Radians{
-    fn from(deg: Degrees) -> Self {
-        Radians(deg.0 * std::f32::consts::PI / 180.0)
+impl <K,V> HashMapBucket<K,V>
+where K: Eq + std::hash::Hash
+{
+    fn new() -> Self {
+        HashMapBucket {
+            map: HashMap::new()
+        }
     }
-}
 
-fn sin(angle: impl Into<Radians>) -> f32 {
-    let angle: Radians = angle.into();
-    angle.0.sin()
+    fn insert(&mut self, key: K, value: V) {
+        let values = self.map.entry(key).or_insert(Vec::new());
+        values.push(value);
+    }
 }
 
 fn main() {
-    let behind_you = Degrees(13.0);
-    let behind_you_radians =  Degrees::from(behind_you);
-    let behind_you_radians2: Radians =  Degrees(180.0).into();
-
-    println!("{:?}", behind_you_radians);
-    println!("{:?}", behind_you_radians2);
-    println!("{:?}", sin(behind_you_radians));
+    let mut my_buckets = HashMapBucket::new();
+    my_buckets.insert("hello", 1);
+    my_buckets.insert("hello", 2);
+    my_buckets.insert("goodbye", 3);
+    println!("{:#?}", my_buckets.map);
 }
