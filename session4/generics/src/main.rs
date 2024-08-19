@@ -1,21 +1,33 @@
-use std::fmt::Debug;
 
-fn just_print_it<T: ToString>(x: T){
-    println!("{}", x.to_string());
+#[derive(Debug)]
+struct Degrees(f32);
+
+#[derive(Debug)]
+struct Radians(f32);
+
+impl From<Radians> for Degrees{
+    fn from(rad: Radians) -> Self {
+        Degrees(rad.0 * 180.0 / std::f32::consts::PI)
+    }
 }
 
-fn just_print_it_with_where<T, U>(x: T, y: U)
-where T: ToString + Debug, U: ToString,
-{
-    println!("{}", x.to_string());
-    println!("{}", y.to_string());
+impl From<Degrees> for Radians{
+    fn from(deg: Degrees) -> Self {
+        Radians(deg.0 * std::f32::consts::PI / 180.0)
+    }
+}
 
+fn sin(angle: impl Into<Radians>) -> f32 {
+    let angle: Radians = angle.into();
+    angle.0.sin()
 }
 
 fn main() {
-    just_print_it("Hello");
-    just_print_it(5);
+    let behind_you = Degrees(13.0);
+    let behind_you_radians =  Degrees::from(behind_you);
+    let behind_you_radians2: Radians =  Degrees(180.0).into();
 
-    just_print_it_with_where("Hello", 5);
-    just_print_it_with_where(5, "12");
+    println!("{:?}", behind_you_radians);
+    println!("{:?}", behind_you_radians2);
+    println!("{:?}", sin(behind_you_radians));
 }
