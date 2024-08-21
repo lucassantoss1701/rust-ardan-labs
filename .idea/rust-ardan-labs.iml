@@ -49,6 +49,7 @@
       <sourceFolder url="file://$MODULE_DIR$/session4/generics/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/session4/cycles/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/session4/iterators/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/session4/packing/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/session1/hello_world/target" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
