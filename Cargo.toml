@@ -40,5 +40,5 @@ members = [ "session1/authentication",
     "session3/restclient",
     "session3/tcpserver",
     "session3/channels",
-    "session3/async_mutex", "session3/tokio_select", "session3/recursion", "session3/logspan", "session3/db", "session3/web_service", "session4/memory", "session4/low_level", "session4/dropping", "session4/refc", "session4/traits", "session4/generics", "session4/iterators", "session4/cycles", "session4/packing",
+    "session3/async_mutex", "session3/tokio_select", "session3/recursion", "session3/logspan", "session3/db", "session3/web_service", "session4/memory", "session4/low_level", "session4/dropping", "session4/refc", "session4/traits", "session4/generics", "session4/iterators", "session4/cycles", "session4/packing", "session4/bytes",
 ]
